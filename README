@@ -1,0 +1,12 @@
+Two programs are contained here:
+
+Dumper:
+
+Given a Transformice.swf, extracts the true .swf that is embedded in
+the binary blobs inside.
+
+Sniffer:
+
+Given a true .swf, extracts the keys needed to login to the game.
+
+See the fetch.sh script for an example of intended usage.
