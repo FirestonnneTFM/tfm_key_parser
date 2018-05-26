@@ -14,7 +14,9 @@ POSIX: simply use the makefile, this assumes that zlib libraries and
 headers are installed.
 
 WINDOWS: use the `mingw-makefile` to compile instead. It will use the
-`include` and `lib` folders to supply the zlib headers and libraries.
+`include` and `lib` folders to supply the zlib headers and
+libraries. If you don't have the binaries, some are provided in the
+`zlib_for_ming32.zip` file in this directory.
 
 make all OR make sniffer OR make dumper
 
