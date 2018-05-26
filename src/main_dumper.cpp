@@ -115,7 +115,7 @@ int main(int argc, char **argv) {
 		for (int i = 0; i < 12; ++i) {
 			unorder[sym.ch_ids[i] - 1] = prune(sym.names[i]);
 		}
-		FILE *out_file = fopen(argv[2], "w");
+		FILE *out_file = fopen(argv[2], "wb");
 		for (int i = 0; i < 12; ++i) {
 			for (int j = 0; j < 12; ++j) {
 				if (strcmp(order[i], unorder[j]) == 0) {
