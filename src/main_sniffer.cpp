@@ -12,6 +12,7 @@ public:
 	char handshake[20];
 	keys();
 	void print();
+	void write_to(FILE *f);
 };
 
 keys::keys() {
@@ -32,6 +33,13 @@ void keys::print() {
 		printf(" %02x", hash[i]);
 	}
 	std::cout << std::endl;
+}
+
+void keys::write_to(FILE *f) {
+	fwrite(&version, 2, 1, f);
+	fwrite(&login, 4, 1, f);
+	fwrite(hash, 1, 20, f);
+	fwrite(handshake, 1, 20, f);
 }
 
 static keys key;
@@ -190,7 +198,7 @@ static void find_hash() {
 						fatal("mark2 not unique");
 					mark[2] = method;
 				}
-				if (method->max_stack == 6 && method->local_count == 4) {
+				if (method->max_stack == 6 && method->local_count == 4 && method->param_type.length() == 0) {
 					if (mark[4])
 						fatal("mark4 not unique");
 					mark[4] = method;
@@ -328,8 +336,8 @@ int main(int argc, char **argv) {
 		find_handshake();
 		find_hash();
 		key.print();
-		FILE *out_file = fopen(argv[2], "w");
-		fwrite(&key, 1, sizeof(keys), out_file);
+		FILE *out_file = fopen(argv[2], "wb");
+		key.write_to(out_file);
 		fclose(out_file);
 		delete swf;
 		return 0;

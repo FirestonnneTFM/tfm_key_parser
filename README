@@ -1,10 +1,10 @@
 Two programs are contained here:
 
-Dumper: given a Transformice.swf, extracts the true .swf that is
+dumper: given a Transformice.swf, extracts the true .swf that is
 embedded in the binary blobs inside.
 
-Sniffer: given a true .swf, extracts the keys needed to login to the
-game.
+sniffer: given a true .swf, extracts the keys needed to login to the
+game. It will output them both to terminal and a binary file.
 
 See the fetch.sh script for an example of intended usage.
 
@@ -18,6 +18,10 @@ WINDOWS: use the `mingw-makefile` to compile instead. It will use the
 libraries. If you don't have the binaries, some are provided in the
 `zlib_for_ming32.zip` file in this directory.
 
-make all OR make sniffer OR make dumper
+make all
+- OR -
+make sniffer
+- OR -
+make dumper
 
 on windows replace `make` with `make -f mingw-makefile`
