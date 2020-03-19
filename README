@@ -25,3 +25,20 @@ make sniffer
 make dumper
 
 on windows replace `make` with `make -f mingw-makefile`
+
+If during compiling on windows you recieve an error message like the
+following:
+
+In file included from ./include/zconf.h:288:0,
+                 from ./include/zlib.h:36,
+                 from src/swf_file.cpp:3:
+c:\mingw\include\sys\types.h:75:19: error: conflicting declaration 'typedef _off_t off_t'
+   typedef _off_t  off_t;
+
+
+Fix it by removing the lines 34 - 35 in include/zlib.h
+
+(these lines)
+
+typedef size_t _fsize_t;
+typedef long long off_t;
